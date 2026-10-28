@@ -1,36 +1,35 @@
-import java.util.*; 
+import java.util.*;
+
 class Solution {
     public int solution(int[] priorities, int location) {
-        Queue <int[]> queue = new ArrayDeque<>(); 
-        for (int i = 0; i < priorities.length; i++){
-            queue.offer(new int[] {priorities[i], i});
+        Queue<Integer> q = new LinkedList<>();
+        
+        for(int i=0; i<priorities.length; i++){
+            q.offer(i);
         }
         
-        int cnt = 0; 
-        while (!queue.isEmpty()){
-            boolean flag = true; 
-            int[] curr = queue.poll(); 
-            int curr_pri = curr[0]; 
-            int curr_idx = curr[1]; 
+        int cnt = 0;
+        
+        while(!q.isEmpty()){
+            int idx = q.poll();
+            boolean higher = false;
             
-            for (int[] job : queue) {
-                if (curr_pri < job[0]) {
-                    flag = false; 
-                    break; 
+            for(int i=0; i<priorities.length; i++){
+                if(priorities[i] > priorities[idx]) {
+                    higher = true;
+                    break;                
                 }
             }
-            
-            if (!flag) {
-                queue.offer(curr);
-            } else {
-                // 실제 실행됬을 때 
-                cnt++; 
-                if (curr_idx == location){
-                    return cnt; 
+                
+                if(higher){
+                    q.offer(idx);
+                } else {
+                    cnt++;
+                    priorities[idx] = 0;
+                    
+                    if(idx == location) return cnt;
                 }
-            } 
-            
         }
-        return -1; 
+        return cnt;
     }
 }
