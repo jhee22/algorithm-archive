@@ -12,23 +12,25 @@ class Solution {
         
         while(!q.isEmpty()){
             int idx = q.poll();
+            
             boolean higher = false;
             
             for(int i=0; i<priorities.length; i++){
-                if(priorities[i] > priorities[idx]) {
+                if (priorities[i] > priorities[idx]) {
                     higher = true;
-                    break;                
+                    break;
                 }
             }
+            
+            if(higher) {
+                q.offer(idx);
+            } else {
+                cnt++;
+                priorities[idx] = 0;
                 
-                if(higher){
-                    q.offer(idx);
-                } else {
-                    cnt++;
-                    priorities[idx] = 0;
-                    
-                    if(idx == location) return cnt;
-                }
+                if(idx == location) return cnt;
+            }
+            
         }
         return cnt;
     }
