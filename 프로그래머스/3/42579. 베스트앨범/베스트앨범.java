@@ -4,10 +4,8 @@ class Solution {
     public int[] solution(String[] genres, int[] plays) {
         HashMap<String, Integer> map = new HashMap<>();
         
-        //plays 합산한거 구하기
         for(int i=0; i<genres.length; i++){
-            String genre=genres[i];
-            
+            String genre = genres[i];
             map.put(genre, map.getOrDefault(genre, 0) + plays[i]);
         }
         
@@ -17,22 +15,24 @@ class Solution {
             songs.add(i);
         }
         
-        //노래 번호를 정렬해보기
         songs.sort((a,b) -> {
+            //1, 속한 노래가 많이 재생된 장르
             if(!genres[a].equals(genres[b])){
-                return Integer.compare(map.get(genres[b]), map.get(genres[a]));
+                return Integer.compare(
+                map.get(genres[b]), map.get(genres[a]));
             }
             
-            if(plays[a] != plays[b]) {
+            //2. 많이 재생된 노래
+            if(plays[a]!=plays[b]){
                 return Integer.compare(plays[b], plays[a]);
             }
             
             return Integer.compare(a,b);
         });
         
-        //장르별로 2곡 선택
-        HashMap<String, Integer> cnt = new HashMap<>(); //장르별로 현재 몇곡을 선택했는지
-        List<Integer> ans = new ArrayList<>(); //실제로 베스트 앨범에 수록할 노래 고유 번호 저장
+        
+        HashMap<String, Integer> cnt = new HashMap<>();
+        List<Integer> ans = new ArrayList<>();
         
         for(int idx : songs){
             String genre = genres[idx];
@@ -50,7 +50,5 @@ class Solution {
         }
         
         return result;
-        
-        
     }
 }
