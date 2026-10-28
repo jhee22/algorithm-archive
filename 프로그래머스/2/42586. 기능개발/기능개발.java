@@ -1,37 +1,45 @@
-import java.util.*; 
+/*
+기능 개발 속도 다름
+뒤에 있는 기능이 먼저 개발될 수 있음 -> 이때 뒤에 있는 기능은 앞에 있는 기능이 배포될 때 같이 배포됨
+먼저 배포되어야 하는 순서대로 작업의 진도가 적힌 progresses
+각 작업의 개발속도 speeds
+각 배포마다 몇 개의 기능이 배포되는지 return 
+*/
+
+import java.util.*;
+
 class Solution {
     public int[] solution(int[] progresses, int[] speeds) {
-        // cnt 를 넣을 정답 리스트 선언 
-        ArrayList <Integer> result = new ArrayList<>(); 
+        int[] days = new int[progresses.length];
         
-        // Queue 에 값 넣기 
-        Queue <Integer> queue = new ArrayDeque<>(); 
-        for (int i = 0; i < progresses.length; i++) { 
-            int rest = (int) Math.ceil( (double) (100 - progresses[i]) / speeds[i]); 
-            queue.offer(rest); 
+        for(int i=0; i<progresses.length; i++){
+            days[i] = (int)Math.ceil((double)(100-progresses[i]) / speeds[i]);
         }
-        // Queue 순회
-        while (!queue.isEmpty()) {
-            // 이번 배포의 기준 날짜, 배포 개수 (이번 배포 포함이니까 1부터 시작 )
-            int val = queue.poll(); 
-            int cnt = 1;    
-            
-            // 비교만 하고 싶을 때는 peek() 
-            while (!queue.isEmpty() && val >= queue.peek()) {
-                // 다음 값 제거 
-                queue.poll();
-                cnt++; 
+        
+        List<Integer> ans = new ArrayList<>();
+        
+        int max = days[0];
+        int cnt = 1;
+        
+        for(int i=1; i<days.length; i++){
+            if(days[i] <= max){
+                cnt++;
+            } else {
+                ans.add(cnt);
+                max = days[i];
+                cnt = 1;
             }
-            
-            result.add(cnt); 
-            
         }
         
-        int[] answer = new int[result.size()]; 
-        for (int i = 0; i < result.size(); i++) {
-            answer[i] = result.get(i); 
+        ans.add(cnt);
+        
+        int[] result = new int[ans.size()];
+        
+        for(int i=0; i<ans.size(); i++){
+            result[i] = ans.get(i);
         }
         
-        return answer; 
+        return result;
+        
     }
 }
