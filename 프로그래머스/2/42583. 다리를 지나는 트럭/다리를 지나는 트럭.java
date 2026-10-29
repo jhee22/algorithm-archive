@@ -1,40 +1,41 @@
-import java.util.*; 
+/*
+관리해야 하는 것
+- 지금 다리 위에 있는 트럭의 weights와 위치 (bridge)
+- 현재 다리 위 트럭 전체 무게 (totalWeights)
+- 현재 몇초가 지났는지 (time)
+*/
+import java.util.*;
+
 class Solution {
     public int solution(int bridge_length, int weight, int[] truck_weights) {
-        // 다리 큐만들기 
-        Queue<Integer> queue = new ArrayDeque<>(); 
+        Queue<Integer> q = new LinkedList<>();
         
-        // 다리 길이 만큼 0을 넣는다 
-        for (int i = 0; i < bridge_length; i++){
-            queue.offer(0); 
+        for(int i=0; i<bridge_length; i++){
+            q.offer(0);
         }
         
-        // 상태변수 선언 
-        int time = 0; 
-        int curr_w = 0; 
-        int idx = 0; 
+        int idx = 0;
+        int time = 0;
+        int totalWeights = 0;
         
-        // 모든 트럭이 다리에 들어가지 않으면 반복
-        while (idx < truck_weights.length) {
-           // 시간 증가
-            time++; 
+        while (idx < truck_weights.length || totalWeights > 0){
+           
+            //1초 경과 
+            time++;
             
-            // 다리의 맨 앞 값을 제거 
-            int outTruck = queue.poll(); 
-            curr_w -= outTruck;
+            //다리 맨 앞 제거 -> 다리가 한 칸 이동한 효과 
+            totalWeights -= q.poll();
             
-            // 다음 트럭이 다리에 들어갈 수 있는가? 
-            if (curr_w + truck_weights[idx] <= weight) {
-                // 큐에 다음 트럭의 무게를 넣기 
-                queue.offer(truck_weights[idx]); 
-                curr_w += truck_weights[idx]; 
-                idx++; 
+            //새로운 트럭 진입 가능 
+            if(idx < truck_weights.length && 
+              totalWeights + truck_weights[idx] <= weight) {
+                q.offer(truck_weights[idx]);
+                totalWeights += truck_weights[idx];
+                idx++;
             } else {
-                queue.offer(0);
-            } 
-        } 
-        return time + bridge_length;
-        
-        
+                q.offer(0);
+            }
+        }
+        return time;
     }
 }
