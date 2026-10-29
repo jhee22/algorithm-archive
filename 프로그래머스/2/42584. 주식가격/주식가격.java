@@ -1,33 +1,21 @@
-import java.util.*;
+/*
+초 단위로 기록된 주식가격 prices
+가격이 떨어지지 않은 기간이 몇 초인지 return
+
+*/
+
 class Solution {
     public int[] solution(int[] prices) {
-        // Queue 선언 
-        Queue<Integer> queue = new ArrayDeque<>(); 
-        for (int i = 0; i < prices.length; i++) {
-            queue.add(prices[i]); 
-        }
+        int[] time = new int[prices.length];
         
-        ArrayList<Integer> result = new ArrayList<>(); 
-        while(!queue.isEmpty()) {
-            int time = 0; 
-            boolean flag = true; 
-            int curr = queue.poll(); 
-            
-            // 본인보다 작거나 같으면 반복 스탑 
-            for (int p: queue) {
-                time++; 
-                if (curr > p) {
-                    break; 
-                } 
-            }
-            result.add(time); 
-        
+        for(int i=0; i<prices.length; i++){
+            int cnt=0;
+            for(int j=i+1; j<prices.length; j++){
+                cnt++;
+                if (prices[i] > prices[j]) break;
         }
-        int[] answer = new int[result.size()]; 
-            for (int i = 0; i < result.size(); i++){
-                answer[i] = result.get(i); 
-        }
-        
-        return answer; 
+            time[i] = cnt;
+           
     }
-}
+        return time;
+}}
