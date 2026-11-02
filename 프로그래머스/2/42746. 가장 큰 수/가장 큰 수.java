@@ -1,32 +1,31 @@
-import java.util.*; 
+/*
+정수를 이어 붙여 만들 수 있는 가장 큰 수 알아내기
+배열 numbers가 주어질 때 순서를 재배치하여 만들 수 있는 가장 큰 수를 문자열로 return
+
+1. 맨 앞자리 숫자가 큰거 (두 숫자를 이어붙였을 때 더 큰거 선택해야 함)
+
+*/
+
+import java.util.*;
+
 class Solution {
     public String solution(int[] numbers) {
-        // (0) 문자열 합치는 StringBuilder 
-        StringBuilder sb = new StringBuilder(); 
+        String[] arr = new String[numbers.length];
         
-        // (1) 정수 배열 -> 문자열 리스트로 변환하기 
-        List<String> list = new ArrayList<>(); 
-        for (int i = 0; i < numbers.length; i++) {
-            list.add(String.valueOf(numbers[i])); 
+        for(int i=0; i<numbers.length; i++){
+            arr[i] = String.valueOf(numbers[i]);
         }
         
-        // 내림차순 정렬 
-        Collections.sort(list, (a,b) -> {
-            String first = a + b;
-            String second = b + a;
-            return second.compareTo(first);
-        }); 
+        Arrays.sort(arr, (a,b) -> (b+a).compareTo(a+b));
         
-        if (list.get(0).equals("0")) {
-            return "0"; 
-        }
-       
+        if(arr[0].equals("0")) return "0";
         
-        for (String snum : list){
-            sb.append(snum); 
+        StringBuilder sb = new StringBuilder();
+        
+        for(String a : arr){
+            sb.append(a);
         }
         
-      
-        return sb.toString(); 
+        return sb.toString();
     }
 }
