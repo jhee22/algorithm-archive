@@ -1,0 +1,12 @@
+*.class
+*.exe
+*.o
+__pycache__/
+.venv/
+out/
+.vscode/
+.idea/
+.DS_Store
+.env
+.env.*
+!.env.example
