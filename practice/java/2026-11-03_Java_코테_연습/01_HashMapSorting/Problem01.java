@@ -10,7 +10,39 @@ import java.util.function.Supplier;
 public class Problem01 {
     public static String[] solution(String[] stations, int[] signal) {
         // TODO: 직접 구현하세요.
-        throw new UnsupportedOperationException();
+        Map<String, Long[]> m = new HashMap<>(); 
+        
+        // stations, signal 의 인덱스는 동일함 
+        for (int i = 0; i < signal.length; i++) {
+            String k = stations[i]; 
+            int v = signal[i]; 
+
+            Long[] record = m.getOrDefault(k, new Long[]{0L, 0L}); 
+            record[0] += v; 
+            record[1]++; 
+            m.put(k, record); 
+            
+        }
+        // throw new UnsupportedOperationException();
+        List<String> names = new ArrayList<>(m.keySet()); 
+        
+        names.sort((a, b) -> {
+            Long[] recordA = m.get(a); 
+            Long[] recordB = m.get(b); 
+
+            // 1. 총 신호 세기 
+            int result = Long.compare(recordB[0], recordA[0]); 
+            if (result != 0) return result; 
+
+            // 2. 관측 횟수 오름차순 
+            result = Long.compare(recordA[1], recordB[1]); 
+            if (result != 0 ) return result; 
+
+            // 3. 이름 사전순 
+            return a.compareTo(b); 
+        });
+       
+        return names.toArray(new String[0]);
     }
 
     private static void test(int number, String label, String[] expected, Supplier<String[]> run) {
