@@ -10,6 +10,8 @@
 | java | leetcode | 29 |
 | java | programmers | 141 |
 | java | swea | 19 |
+| python | programmers | 2 |
+| python | swea | 3 |
 
 ## cpp / codetree
 
@@ -328,3 +330,14 @@
 - [day06_subset/10726/Solution.java](solutions/java/swea/day06_subset/10726/Solution.java)
 - [day06_subset/2817/Solution.java](solutions/java/swea/day06_subset/2817/Solution.java)
 - [day06_subset/5215/Solution.java](solutions/java/swea/day06_subset/5215/Solution.java)
+
+## python / programmers
+
+- [12910/solution.py](solutions/python/programmers/12910/solution.py)
+- [12926/solution.py](solutions/python/programmers/12926/solution.py)
+
+## python / swea
+
+- [1989/solution.py](solutions/python/swea/1989/solution.py)
+- [2001/solution.py](solutions/python/swea/2001/solution.py)
+- [2072/solution.py](solutions/python/swea/2072/solution.py)
