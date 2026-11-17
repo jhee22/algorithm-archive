@@ -6,48 +6,45 @@ https://school.programmers.co.kr/learn/courses/30/lessons/87946
 """
 
 max_count = 0
-count = 0 
+visited = []
+dungeon_list = []
 
-def dfs(visited, k, dungeons):
-    global max_count, count 
+def dfs(k, count):
+    global max_count 
 
+    # 모든 탐색 경로에서 가장 많이 방문한 횟수 기록 
     max_count = max(max_count, count)
 
     # 던전 방문 시작  
-    for i in range(len(dungeons)): 
-        require, damage = dungeons[i]
+    for i in range(len(dungeon_list)): 
+        require, damage = dungeon_list[i]
+        
         # 이미 방문한 던전이거나 체력이 안되는 경우  
-        if (visited[i]) or (k < require):
+        if visited[i] or k < require:
             continue
 
         # 방문 
         visited[i] = True 
-        count += 1 
-        dfs(visited, k - damage, dungeons)
-
-        # Back 
-        count -= 1
+        dfs(k - damage, count + 1)
         visited[i] = False 
+
     return
 
-def solution(k, dungeons):
-    # TODO: 직접 구현하세요.
-    # raise NotImplementedError
-    
+def solution(k, dungeons):   
     # k : 현재 피로도 
     # dungeons : ["최소 필요 피로도", "소모 피로도"] 
     # return : 최대 던전 수 
     
-    global max_count, count  
-    max_count = 0 
-    count = 0
+    global max_count, visited, dungeon_list
 
-    """ (1) 방문 배열 """ 
+    # solution 이 호출될 때마다 새 탐색을 위한 값 
+    max_count = 0 
+    dungeon_list = dungeons 
     visited = [False] * (len(dungeons)) 
 
-    """ (2) 방문 시작 """
+    """ 방문 시작 """
     # 0번째 던전부터 방문 시작 
-    dfs(visited, k, dungeons)
+    dfs(k, 0)
 
     return  max_count
 
