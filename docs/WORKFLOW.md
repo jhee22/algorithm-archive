@@ -44,6 +44,8 @@ python -m unittest discover -s scripts -p 'test_*.py'
 python scripts/build_index.py
 ```
 
+이 명령은 `INDEX.md`와 README의 풀이 현황을 함께 갱신합니다. 통계는 `solutions/` 아래의 풀이 파일 수를 세며, 정답 여부나 중복 문제를 판별하지 않습니다.
+
 GitHub Actions가 비활성화되거나 브랜치 정책으로 봇의 push가 차단되면 위 명령을 로컬에서 실행하고 변경 사항을 커밋합니다. 자동화가 돌아가도 문제의 정답 여부를 판정하지는 않습니다.
 
 ## 다른 컴퓨터와 기존 자동화
