@@ -10,7 +10,7 @@
 | java | leetcode | 29 |
 | java | programmers | 141 |
 | java | swea | 19 |
-| python | programmers | 2 |
+| python | programmers | 5 |
 | python | swea | 3 |
 
 ## cpp / codetree
@@ -335,6 +335,9 @@
 
 - [12910/solution.py](solutions/python/programmers/12910/solution.py)
 - [12926/solution.py](solutions/python/programmers/12926/solution.py)
+- [43162/solution.py](solutions/python/programmers/43162/solution.py)
+- [43165/solution.py](solutions/python/programmers/43165/solution.py)
+- [87946/solution.py](solutions/python/programmers/87946/solution.py)
 
 ## python / swea
 
