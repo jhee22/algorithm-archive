@@ -5,9 +5,9 @@ Python 문법을 직접 실행해 확인한 뒤 프로그래머스 문제를 풀
 | 순서 | 유형 | 문제 / 실습 | 목표 시간 |
 |---|---|---|---:|
 | 1 | 문법 | [참조와 복사](../../../Reference/syntax1.py), [자료구조와 정렬](../../../Collections/syntax1.py), [재귀와 스코프](../../../Recursion/syntax1.py) | 25분 |
-| 2 | 재귀 | [타겟 넘버](../../../../solutions/python/programmers/43165/solution.py) | 25분 |
-| 3 | DFS | [네트워크](../../../../solutions/python/programmers/43162/solution.py) | 35분 |
-| 4 | 백트래킹 | [피로도](../../../../solutions/python/programmers/87946/solution.py) | 45분 |
+| 2 | 재귀 | [타겟 넘버](../../../../solutions/python/programmers/2/43165.타겟%20넘버/solution.py) | 25분 |
+| 3 | DFS | [네트워크](../../../../solutions/python/programmers/3/43162.네트워크/solution.py) | 35분 |
+| 4 | 백트래킹 | [피로도](../../../../solutions/python/programmers/2/87946.피로도/solution.py) | 45분 |
 | 5 | 복기 | 상태, 종료 조건, 방문과 복원 정리 | 15분 |
 
 시간이 부족하면 문법과 타겟 넘버부터 풀고 나머지는 다음에 이어서 하자. 네트워크는 [기존 C++ 풀이](../../../../solutions/cpp/programmers/3/43162.%E2%80%85%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC/README.md)가 있는 문제다. 먼저 Python으로 혼자 풀고 기존 풀이와 비교해 보자.
@@ -20,9 +20,9 @@ Python 문법을 직접 실행해 확인한 뒤 프로그래머스 문제를 풀
 python syntax/Reference/syntax1.py
 python syntax/Collections/syntax1.py
 python syntax/Recursion/syntax1.py
-python solutions/python/programmers/43165/solution.py
-python solutions/python/programmers/43162/solution.py
-python solutions/python/programmers/87946/solution.py
+python 'solutions/python/programmers/2/43165.타겟 넘버/solution.py'
+python solutions/python/programmers/3/43162.네트워크/solution.py
+python solutions/python/programmers/2/87946.피로도/solution.py
 ```
 
 세 문제의 구현을 풀이 폴더로 옮겼다. 실행하면 입력, 예상값, 실제값과 PASS/FAIL이 출력된다. 문제 설명과 제한사항은 각 파일의 원문 URL에서 확인하자.

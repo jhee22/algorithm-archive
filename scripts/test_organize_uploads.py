@@ -38,5 +38,42 @@ class OrganizerTest(unittest.TestCase):
                 self.assertTrue((root / 'solutions' / lang / 'codetree/trail1/test/README.md').exists())
             self.assertTrue((notes / 'README.md').exists())
 
+    def test_programmers_level_and_unknown_level(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            known = root / '프로그래머스/2/123.\u2005Test\u2005Problem'
+            unknown = root / '프로그래머스/456'
+            known.mkdir(parents=True)
+            unknown.mkdir(parents=True)
+            (known / 'Solution.java').write_text('java', encoding='utf-8')
+            (unknown / 'solution.py').write_text('python', encoding='utf-8')
+            (unknown / 'README.md').write_text('description', encoding='utf-8')
+            self.assertEqual(organize(root), 2)
+            self.assertTrue((root / 'solutions/java/programmers/2/123.Test Problem/Solution.java').exists())
+            self.assertTrue((root / 'solutions/python/programmers/unclassified/456/solution.py').exists())
+            self.assertTrue((root / 'solutions/python/programmers/unclassified/456/README.md').exists())
+            self.assertFalse((root / '프로그래머스').exists())
+            self.assertEqual(organize(root), 0)
+
+    def test_java_class_filenames_and_conflicting_versions(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            problem = root / '프로그래머스/2/123. Test'
+            problem.mkdir(parents=True)
+            (problem / 'Test.java').write_text('class Solution { int value = 1; }', encoding='utf-8')
+            existing = root / 'solutions/java/programmers/2/123.Test/Solution.java'
+            existing.parent.mkdir(parents=True)
+            existing.write_text('class Solution { int value = 2; }', encoding='utf-8')
+            codetree = root / 'trail1/example'
+            codetree.mkdir(parents=True)
+            (codetree / 'example.java').write_text('public class Main {}', encoding='utf-8')
+            self.assertEqual(organize(root), 2)
+            self.assertIn('value = 2', existing.read_text(encoding='utf-8'))
+            versions = list(existing.parent.glob('variants/*/Solution.java'))
+            self.assertEqual(len(versions), 1)
+            self.assertIn('value = 1', versions[0].read_text(encoding='utf-8'))
+            self.assertTrue((root / 'solutions/java/codetree/trail1/example/Main.java').exists())
+            self.assertEqual(organize(root), 0)
+
 if __name__ == '__main__':
     unittest.main()

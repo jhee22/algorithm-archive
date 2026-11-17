@@ -24,13 +24,15 @@
 ```text
 solutions/
   java/
-    programmers/       # 프로그래머스
+    programmers/       # 프로그래머스 (0, 1, 2, 3 ... 레벨별)
     codetree/          # CodeTree
     swea/              # SWEA
     leetcode/          # LeetCode
   cpp/
     programmers/
     codetree/
+  python/
+    programmers/       # 프로그래머스 (레벨별)
 syntax/                # 주제별 문법 연습 (언어별 파일을 함께 보관)
   Collections/
   Recursion/
