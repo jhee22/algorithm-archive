@@ -58,8 +58,8 @@ scripts/               # 새 업로드 정리, 목록 갱신, 이전 검증
 
 첫 14일은 격자 탐색·시뮬레이션에서 G3 상태 설계까지 연습합니다. 마지막 7일은 2주 차 최초 시도 결과에 따라 G2 도전과 오답 재구현 중에서 선택합니다.
 
-- [실력 진단과 날짜별 진도표](syntax/records/python/README.md)
-- [11월 23일 연습 시작하기](syntax/records/python/2026-11-23/README.md) · [최초 시도와 재풀이 기록](syntax/records/python/2026-11-23/review.md)
+- [실력 진단과 날짜별 진도표](3weekBoj/README.md)
+- [11월 23일 연습 시작하기](3weekBoj/2026-11-23/README.md) · [최초 시도와 재풀이 기록](3weekBoj/2026-11-23/review.md)
 
 ## 저장소 운영
 

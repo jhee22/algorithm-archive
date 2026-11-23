@@ -21,8 +21,8 @@
 저장소 루트에서 한 파일을 실행한 뒤 원문의 입력 한 세트를 붙여 넣는다. 처음 제공되는 파일은 입력을 읽고 끝난다. `solve`에 반환값을 작성하면 답이 표준 출력에 표시된다.
 
 ```powershell
-python syntax/records/python/2026-11-23/14940.py
-python syntax/records/python/2026-11-23/14891.py
+python 3weekBoj/2026-11-23/14940.py
+python 3weekBoj/2026-11-23/14891.py
 ```
 
 두 문제를 마치면 20분 동안 [최초 시도·재풀이 기록표](review.md)에 결과를 적는다. 위 표의 상태를 갱신하고 11/25에 다시 확인할 반례를 하나 고른다.
