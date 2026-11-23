@@ -6,6 +6,7 @@ __pycache__/
 out/
 .vscode/
 .idea/
+.cph/
 .DS_Store
 .env
 .env.*
