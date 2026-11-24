@@ -2,7 +2,7 @@
 
 코딩 테스트 풀이와 직접 구현하는 학습 세트를 한곳에 모았습니다.
 
-**[언어·플랫폼별 풀이 목록](INDEX.md)** · **[Java 연습과 주간 계획](syntax/records/java/README.md)** · **[새 풀이 업로드 방법](docs/WORKFLOW.md)** · **[백준 3주 문제 목록](3weekBoj/README.md)**
+**[언어·플랫폼별 풀이 목록](INDEX.md)** · **[Java 연습과 주간 계획](syntax/records/java/README.md)** · **[새 풀이 업로드 방법](docs/WORKFLOW.md)** · **[백준 2주 문제 목록](boj-sprint/README.md)**
 
 ## 풀이 현황
 
